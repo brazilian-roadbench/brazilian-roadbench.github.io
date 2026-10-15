@@ -1,16 +1,13 @@
-# Nerfies
+# Brazilian RoadBench website
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+Project website for **Brazilian RoadBench: Structured L2+/ADAS Scenario Interpretation under Brazilian Portuguese Variation**, accepted at Latin.Science 2026. The proceedings version is forthcoming.
 
-If you find Nerfies useful for your work please cite:
-```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
-}
+The static site is served from `index.html`. Public benchmark files are mirrored in `dataset/`, including the paired evaluation file and a downloadable ZIP archive.
+
+## Local preview
+
+```bash
+python3 -m http.server 8000
 ```
 
-# Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+The dataset is licensed under CC BY 4.0. The website is based on the [Nerfies project-page template](https://github.com/nerfies/nerfies.github.io) and retains its attribution.

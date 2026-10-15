@@ -1,223 +1,120 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="A novel benchmark for scene classification for vehicular applications..">
-  <meta name="keywords" content="vwise, clip, x-clip, scene classification, autonomous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ROAD Dataset
-</title>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <meta name="description" content="Brazilian RoadBench: a paired benchmark for structured L2+/ADAS scenario interpretation under Brazilian Portuguese variation.">
+  <meta name="keywords" content="Brazilian Portuguese, benchmark, ADAS, road safety, language models">
+  <meta property="og:title" content="Brazilian RoadBench">
+  <meta property="og:description" content="200 paired Brazilian road-safety prompts for structured L2+/ADAS scenario interpretation.">
+  <meta name="theme-color" content="#12372a">
+  <title>Brazilian RoadBench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <link rel="icon" href="./static/images/favicon.svg" type="image/svg+xml">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="#top"><span>BR</span> Brazilian RoadBench</a>
+      <nav aria-label="Main navigation">
+        <a href="#benchmark">Benchmark</a><a href="#results">Results</a><a href="#dataset">Dataset</a><a href="#abstract">Abstract</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">The Road surface Observation and Analysis Dataset (ROAD)
-</title></h1>
-<div class="is-size-5 publication-authors">
-  <span class="author-block">
-    <a href="http://wlcosta.github.io">Willams de Lima Costa</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Thifany Ketuli Silva de Souza</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Jonas Ferreira Silva</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Carlos Gabriel Bezerra Pereira</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Bruno Reis Vila Nova</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Rafael Raider Leoni</a><sup>2</sup>,</span>
-  <span class="author-block">
-    <a href="#">Juliano Silva</a><sup>2</sup>,</span>
-  <span class="author-block">
-    <a href="#">Valter Ferreira</a><sup>2</sup>,</span>
-  <span class="author-block">
-    <a href="#">Sibele Neto</a><sup>3</sup>,</span>
-  <span class="author-block">
-    <a href="#">Samantha Uehara</a><sup>4</sup>,</span>
-  <span class="author-block">
-    <a href="#">Daniel Giacomo</a><sup>5</sup>,</span>
-  <span class="author-block">
-    <a href="#">João Marcelo Teixeira</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Veronica Teichrieb</a><sup>1</sup>,</span>
-  <span class="author-block">
-    <a href="#">Cristiano Coelho de Araújo</a><sup>1</sup>
-  </span>
-</div>
-
-<div class="is-size-5 publication-authors">
-  <span class="author-block"><sup>1</sup>Voxar Labs, Centro de Informática, Universidade Federal de Pernambuco, Brazil</span></br>
-  <span class="author-block"><sup>2</sup>Volkswagen Truck and Bus, Resende, Rio de Janeiro, Brazil</span></br>
-  <span class="author-block"><sup>3</sup>Stellantis Brasil, Porto Real, Rio de Janeiro, Brazil</span></br>
-  <span class="author-block"><sup>4</sup>Volkswagen do Brasil, São Bernardo do Campo, São Paulo, Brazil</span></br>
-  <span class="author-block"><sup>5</sup>Embeddo, Volta Redonda, Rio de Janeiro, Brazil</span></br>
-</div>
-
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="#road-access"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
-            </div>
-
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <a class="pill" href="https://latinoware.org/latinscience2026/" target="_blank" rel="noopener">Accepted at Latin.Science 2026 ↗</a>
+          <h1>Brazilian <em>RoadBench</em></h1>
+          <p class="deck">Structured L2+/ADAS scenario interpretation under Brazilian Portuguese variation.</p>
+          <p class="summary">A text-only paired benchmark for testing whether language models can turn everyday Brazilian road descriptions into reliable, machine-readable safety labels.</p>
+          <div class="actions">
+            <a class="button primary" href="./dataset/brazilian-roadbench-dataset.zip" download>Download dataset ↓</a>
+            <a class="button secondary" href="https://github.com/wlcosta/brazilian-roadbench" target="_blank" rel="noopener">View code ↗</a>
+          </div>
+          <div class="authors">
+            <p><a href="https://wlcosta.github.io" target="_blank" rel="noopener">Willams de Lima Costa</a> · João Marcelo Teixeira · Veronica Teichrieb</p>
+            <span>Voxar Labs · Centro de Informática · Universidade Federal de Pernambuco</span>
+            <small>Accepted paper · proceedings publication forthcoming</small>
           </div>
         </div>
+        <aside class="pair-card" aria-label="Paired prompt example">
+          <span class="label">One scenario, two phrasings</span>
+          <article class="canonical"><small>Canonical · S001</small><p lang="pt-BR">Ao se aproximar de uma faixa em avenida urbana, uma pessoa começa a atravessar entre carros parados.</p></article>
+          <div class="same">same gold labels</div>
+          <article class="variant"><small>Brazilian variant · S001</small><p lang="pt-BR">Chegando perto da faixa numa avenida da cidade, uma pessoa começa a passar entre os carros parados.</p></article>
+          <div class="chips"><code>crossing</code><code>high</code><code>prepare_to_stop</code></div>
+        </aside>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="shell stats"><div><b>200</b><span>prompts</span></div><div><b>100</b><span>paired scenarios</span></div><div><b>8</b><span>categories</span></div><div><b>7</b><span>structured labels</span></div></div>
+    </section>
 
-
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/dataset-teaser-1.mp4"
-                type="video/mp4">
-      </video>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>Road surface classification (RSC) is a key enabler for environment-aware predictive maintenance systems. However, existing RSC techniques often fail to generalize beyond narrow operational conditions due to limited sensing modalities and datasets that lack environmental diversity. This work addresses these limitations by introducing a multimodal framework that fuses images and inertial measurements using a lightweight bidirectional cross-attention module followed by an adaptive gating layer that adjusts modality contributions under domain shifts. 	Given the limitations of current benchmarks, especially regarding lack of variability, we introduce ROAD, a new dataset composed of three complementary subsets: (i) real-world multimodal recordings with RGB–IMU streams synchronized using a gold-standard industry datalogger, captured across diverse lighting, weather, and surface conditions; (ii) a large vision-only subset designed to assess robustness under adverse illumination and heterogeneous capture setups; and (iii) a synthetic subset generated to study out-of-distribution generalization in scenarios difficult to obtain in practice. Experiments show that our method achieves a +1.4 pp improvement over the previous state-of-the-art on the PVS benchmark and an +11.6 pp improvement on our multimodal ROAD subset, with consistently higher F1-scores on minority classes. The framework also demonstrates stable performance across challenging visual conditions, including nighttime, heavy rain, and mixed-surface transitions. These findings indicate that combining affordable camera and IMU sensors with multimodal attention mechanisms provides a scalable, robust foundation for road surface understanding, particularly relevant for regions where environmental variability and cost constraints limit the adoption of high-end sensing suites.
-          </p>
+    <section class="section" id="benchmark">
+      <div class="shell">
+        <div class="heading split"><div><span class="eyebrow">The benchmark</span><h2>Language in. Structured safety information out.</h2></div><p>Brazilian RoadBench isolates a practical interface layer: understanding short text descriptions—not visual perception, vehicle control, or autonomous-driving certification.</p></div>
+        <figure><img src="./static/images/roadbench/benchmark-overview.png" alt="Brazilian Portuguese scenarios are mapped by language models to structured ADAS-style output and evaluated for score, robustness, and schema compliance."><figcaption>Canonical and Brazilian-variant prompts use the same output schema and evaluation protocol.</figcaption></figure>
+        <div class="features">
+          <article><span>01</span><h3>Paired by design</h3><p>Every scenario appears in canonical and Brazilian-variant form with identical reference labels.</p></article>
+          <article><span>02</span><h3>Brazilian by construction</h3><p>Variants introduce informal, regional, cultural, and lightly noisy PT-BR without changing the hazard.</p></article>
+          <article><span>03</span><h3>Strictly structured</h3><p>Models must return valid context, actor, hazard, risk, ADAS-function, and action labels.</p></article>
         </div>
       </div>
-    </div>
-    <!--/ Abstract. -->
+    </section>
 
-  </div>
-</section>
+    <section class="section tinted">
+      <div class="shell">
+        <div class="heading compact"><span class="eyebrow">Dataset construction</span><h2>Controlled variation, shared labels.</h2><p>Canonical scenarios were reviewed for realism, label quality, one primary hazard, and label leakage before paired variants were produced and schema-validated.</p></div>
+        <figure><img src="./static/images/roadbench/construction-pipeline.png" alt="Five-stage pipeline from canonical drafting and manual review through variant generation and schema validation to the paired benchmark."><figcaption>Construction pipeline for 100 canonical and 100 variant prompts.</figcaption></figure>
+      </div>
+    </section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      
-
-   
-
-    
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3" id="vwise-access">Access to data</h2>
-
-        <div class="content has-text-justified">
-          <p> Please contact <a href="mailto:wlc2@cin.ufpe.br">wlc2@cin.ufpe.br</a> to request data access, informing your intended use and affiliation.</p>
-
+    <section class="section results" id="results">
+      <div class="shell">
+        <div class="heading split light"><div><span class="eyebrow">Main results</span><h2>Fluency alone is not enough.</h2></div><p>Sabiá-4 leads overall. Qwen3-4B q4 is the strongest local open-weight baseline, while action selection, ADAS-function prediction, risk calibration, and schema compliance remain bottlenecks.</p></div>
+        <div class="result-grid">
+          <div class="table-wrap"><table><caption>Parse and label-validation failures count as zero.</caption><thead><tr><th>System</th><th>Access</th><th>Parse</th><th>Score</th><th>Retention</th></tr></thead><tbody>
+            <tr class="winner"><td>1 · Sabiá-4</td><td>API</td><td>1.000</td><td>0.672</td><td>0.970</td></tr>
+            <tr><td>2 · Sabiazinho-4</td><td>API</td><td>0.935</td><td>0.584</td><td>0.994</td></tr>
+            <tr><td>3 · Qwen3-4B q4</td><td>Local</td><td>0.970</td><td>0.481</td><td>1.032</td></tr>
+            <tr><td>4 · Llama 3.2 3B q4</td><td>Local</td><td>0.830</td><td>0.426</td><td>0.973</td></tr>
+            <tr><td>5 · Amadeus-Verbo 7B q4</td><td>Local</td><td>0.830</td><td>0.393</td><td>0.912</td></tr>
+            <tr><td>6 · Amadeus-Verbo 3B q4</td><td>Local</td><td>0.785</td><td>0.339</td><td>0.955</td></tr>
+            <tr><td>7 · Gemma 3 4B IT q4</td><td>Local</td><td>0.685</td><td>0.324</td><td>0.994</td></tr>
+          </tbody></table></div>
+          <aside class="result-note"><b>0.672</b><span>best weighted score</span><b>1.000</b><span>Sabiá-4 parse success</span><b>0.481</b><span>best local q4 score</span><p>Retention is variant score divided by canonical score; values near 1 indicate similar aggregate performance.</p></aside>
         </div>
       </div>
-    </div>
-    <!--/ Concurrent Work. -->
+    </section>
 
-  </div>
-</section>
-
-<!--
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{azevedo2024vwise,
-  title={VWise: A novel benchmark for evaluating scene classification for vehicular applications},
-  author={Azevedo, Pedro and Ara{\'u}jo, Emanuella and Pierre, Gabriel and Costa, Willams de Lima and Teixeira, Jo{\~a}o Marcelo and Ferreira, Valter and Jones, Roberto and Teichrieb, Veronica},
-  journal={arXiv preprint arXiv:2406.03273},
-  year={2024}
-}</code></pre>
-  </div>
-</section>
--->
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
+    <section class="section" id="dataset">
+      <div class="shell">
+        <div class="heading split"><div><span class="eyebrow">Open dataset</span><h2>Download, inspect, reproduce.</h2></div><p>All files are UTF-8 JSONL. The paired file is the recommended entry point and contains both prompt forms with shared gold labels.</p></div>
+        <div class="download"><div><small>ZIP · CC BY 4.0</small><h3>Brazilian RoadBench dataset</h3><p>Canonical scenarios, Brazilian variants, paired evaluation data, dataset card, documentation, and license.</p></div><a class="button lime" href="./dataset/brazilian-roadbench-dataset.zip" download>Download all ↓</a></div>
+        <div class="files">
+          <a href="./dataset/scenarios_eval_paired.jsonl" download><small>Recommended</small><b>scenarios_eval_paired.jsonl</b><span>200 evaluation rows</span></a>
+          <a href="./dataset/scenarios_canonical.jsonl" download><small>Source</small><b>scenarios_canonical.jsonl</b><span>100 reviewed scenarios</span></a>
+          <a href="./dataset/scenarios_variants_gpt.jsonl" download><small>Source</small><b>scenarios_variants_gpt.jsonl</b><span>100 paired variants</span></a>
+          <a href="./dataset/DATASET_CARD.md"><small>Documentation</small><b>Dataset card</b><span>Uses and limitations</span></a>
         </div>
+        <div class="notice"><b>Scope and safety note</b><p>This synthetic, text-only benchmark is not a perception benchmark, a vehicle-control benchmark, or a safety-validation suite for deployed ADAS systems.</p></div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
+    <section class="section abstract" id="abstract">
+      <div class="shell abstract-grid"><div><span class="eyebrow">Accepted manuscript</span><h2>Abstract</h2><p class="status">Accepted at Latin.Science 2026. The proceedings version has not yet been published.</p></div><div class="abstract-copy">
+        <p>Large language models can support driver-facing explanations, fleet reports, and road-event triage, but their reliability under Brazilian Portuguese variation remains unclear. We introduce Brazilian RoadBench, a text-only benchmark for structured L2+/ADAS scenario interpretation. The benchmark contains 100 reviewed canonical Brazilian road scenarios and 100 paired Brazilian Portuguese variants, each mapped to reference labels for road context, actors, hazard type, risk level, ADAS function, recommended action, and a short explanation.</p>
+        <p>We evaluate Portuguese-specialized API models, compact local open-weight models, and Portuguese/Brazilian open-weight models. Sabiá-4 achieves the best overall structured score, followed by Sabiazinho-4, while Qwen3-4B q4 is the strongest local open-weight baseline. Results show that Brazilian variants do not generally collapse aggregate performance, but structured-output compliance, risk calibration, and action/ADAS-function selection remain key bottlenecks. Brazilian RoadBench provides a focused benchmark for studying the trade-off between Portuguese-specialized API performance and reproducible local open-model deployment.</p>
+        <div class="citation"><b>Citation forthcoming</b><p>The archival citation will be added after proceedings publication. Until then, cite the dataset repository and note the accepted Latin.Science 2026 paper.</p></div>
+      </div></div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer"><div><a class="brand" href="#top"><span>BR</span> Brazilian RoadBench</a><p>Open research for Brazilian Portuguese road-scenario interpretation.</p></div><div><a href="https://github.com/wlcosta/brazilian-roadbench">Code</a><a href="./dataset/brazilian-roadbench-dataset.zip" download>Dataset</a><a href="./dataset/LICENSE">CC BY 4.0</a><a href="https://latinoware.org/latinscience2026/">Latin.Science</a></div></div><div class="shell footnote">Website template adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.</div></footer>
 </body>
 </html>
